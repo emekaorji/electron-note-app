@@ -1,0 +1,50 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  background-color: #737f79;
+  color: white;
+  font-family: 'Noto Sans', sans-serif;
+  position: relative;
+  overflow-y: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border: 1px solid red;
+}
+
+button {
+  background-color: transparent;
+  font-size: 1em;
+  appearance: none;
+  border: none;
+  border-radius: .3em;
+  transition: all ease-in 0.1s;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+a {
+  height: fit-content;
+  width: fit-content;
+  text-decoration: none;
+}
+
+img, svg {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,35 @@
+.nav {
+  width: 5em;
+  width: 14em;
+  height: 100%;
+  display: flex;
+  gap: 2.5em;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  padding: 1.7em 1em;
+}
+.nav.isOpen {
+  width: 20em;
+}
+.hamburger {
+  width: 2em;
+  height: 2em;
+  border: 1px solid black;
+}
+.navbuttons {
+  width: 100%;
+  display: flex;
+  gap: 0.7em;
+  flex-direction: column;
+}
+.navbuttons button {
+  width: 100%;
+  justify-content: flex-start;
+}
+.profileButton {
+  border-radius: 3em;
+  overflow: hidden;
+  margin-top: auto;
+  padding: 0;
+}
