@@ -41,10 +41,12 @@ jobs:
 
     steps:
       - name: Install Github CLI
-        uses: dev-hanz-ops/install-gh-cli-action@master
+        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
         with:
           gh-cli-version: 2.20.2
 
       - name: Create Pull Request
         run: |
           gh pr create --title "merge ${{ github.head_ref }} to master" --body "Bubly"
+        env:
+          GH_TOKEN: ${{ github.token }}
