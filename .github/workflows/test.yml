@@ -41,7 +41,7 @@ jobs:
 
     steps:
       - name: Install Github CLI
-        uses: dev-hanz-ops/install-gh-cli-action@0.1.0
+        uses: dev-hanz-ops/install-gh-cli-action@master
         with:
           gh-cli-version: 2.20.2
 
