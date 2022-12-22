@@ -10,7 +10,7 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNav = () => setIsOpen(!isOpen);
-  // const closeNav = () => setIsOpen(false);
+  const closeNav = () => setIsOpen(false);
 
   return (
     <>
