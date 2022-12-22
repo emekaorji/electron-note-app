@@ -1,0 +1,29 @@
+name: Auto Merge
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+
+    name: Auto-merge Step
+
+    if: github.base_ref
+
+    steps:
+      - name: Merge Pull Request from 'dev' branch
+        uses: actions/github-script@6.3.3
+        with:
+          script: |
+            github.pullRequests.merge({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.pull_request.number,
+            })
+          github-token: ${{ github.token }}
+
+      - name: Print the current Github Ref
+        run: echo ${{ github.ref }}

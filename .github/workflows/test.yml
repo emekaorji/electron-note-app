@@ -1,6 +1,9 @@
 name: Test
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - dev
 
 jobs:
   test:
@@ -32,3 +35,16 @@ jobs:
           npm run lint
           npm exec tsc
           npm test
+
+  create_pull_request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Github CLI
+        uses: dev-hanz-ops/install-gh-cli-action
+        with:
+          gh-cli-version: 2.20.2
+
+      - name: Create Pull Request
+        run: |
+          gh pr create --title "merge ${{ github.head_ref }} to master" --body "Bubly"
