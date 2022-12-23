@@ -11,18 +11,17 @@ import '../styles/global.css';
 export default function App() {
   return (
     <>
-      <AppWrapper>
-        <Router>
+      <Router>
+        <AppWrapper>
           <Routes>
-            <Route path="/" element={<Empty />}>
-              <Route path=":previewId" element={<Preview />}>
-                <Route path=":noteId" element={<Note />} />
-              </Route>
+            <Route path="/" element={<Empty />} />
+            <Route path="/:previewId" element={<Preview />}>
+              <Route path=":noteId" element={<Note />} />
             </Route>
             <Route path="/about" element={<AboutView />} />
           </Routes>
-        </Router>
-      </AppWrapper>
+        </AppWrapper>
+      </Router>
     </>
   );
 }

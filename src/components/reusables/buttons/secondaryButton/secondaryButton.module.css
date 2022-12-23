@@ -24,29 +24,24 @@
 }
 .button.transparent {
   background-color: transparent;
+  box-shadow: none;
+}
+.button.transparent:focus,
+.button.transparent:hover {
+  box-shadow: none;
 }
 .button.error {
-  background: #FF2828;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
 }
-.button.error path {
-  fill: #ffffff;
-}
-.button > div {
-  display: flex;
-}
-
-.buttonIcon {
-  font-size: var(--iconSize, 1.3em);
-  width: 1em;
-  height: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.buttonText {
-  display: flex;
-  gap: 0.5ch;
-  justify-content: center;
-  align-items: center;
+.button.error::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: #FF282844;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
