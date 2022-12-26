@@ -1,6 +1,7 @@
 import NoteCard from './noteCard/noteCard';
 import styles from './notePreview.module.css';
 import NotePreviewNav from './notePreviewNav/notePreviewNav';
+import notes from '../../../../data/notes.json';
 
 const NotePreview = () => {
   return (
@@ -8,22 +9,9 @@ const NotePreview = () => {
       <div className={styles.previewContainer}>
         <NotePreviewNav />
         <div className={styles.cardsContainer}>
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
+          {notes.map((note) => (
+            <NoteCard key={note?.id} data={note} />
+          ))}
         </div>
       </div>
     </>

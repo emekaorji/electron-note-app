@@ -29,6 +29,7 @@
 }
 .badgesContainer {
   display: flex;
+  gap: 0.2em;
 }
 .layer2 {
   font-size: 0.7em;
@@ -48,6 +49,7 @@
 .collaborators button {
   padding: 0;
   display: flex;
+  gap: 0.3em;
 }
 .image {
   width: 1.3em;
@@ -60,19 +62,4 @@
   font-size: 0.675em;
   font-style: italic;
   white-space: nowrap;
-}
-
-
-
-
-
-
-.imageContainer {
-  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.35),
-    0px 18px 88px -4px rgba(24, 39, 75, 0.35);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 50%;
 }

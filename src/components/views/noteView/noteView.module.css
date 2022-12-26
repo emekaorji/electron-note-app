@@ -1,6 +1,61 @@
-.hello {
+.noteView {
+  flex: 1;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  padding: 1em 1em 0.3em;
+}
+.title {
+  display: flex;
+  gap: 0.1em;
+  flex-direction: column;
+}
+.title input {
+  font-size: var(--size, 2.5em);
+  font-weight: 800;
+  line-height: 1.25em;
+  border-radius: 0;
+}
+.title h1 {
+  max-width: 35ch;
+  font-size: var(--size, 2.5em);
+  font-weight: 800;
+  line-height: 1.25em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.controls {
+  display: flex;
+  gap: 0.3em;
+  justify-content: space-between;
+  align-items: center;
+  /* align-self: flex-start; */
+}
+.comments {
+  font-size: 0.8em;
+  padding: 0.4em;
+}
+.collaborators {
+  display: flex;
+  gap: 0.2em;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  padding: 0.2em;
+}
+.image {
+  width: 1.6em;
+  border: 2px solid var(--color-4);
+  transition: all 200ms ease;
+}
+.image + .image {
+  margin-left: -1em;
+}
+.collaborators:hover .image + .image {
+  margin-left: 0em;
 }

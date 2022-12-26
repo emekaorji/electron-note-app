@@ -32,36 +32,36 @@ import getOrdinalNumber from './getOrdinalNumber';
  * @returns The formatted date
  */
 
-export default function getDateFormat(
-  date: string | Date,
-  format = 'Mmm Dth, YYYY'
+export default function getFormattedDate(
+  date: string | number | Date,
+  format: string
 ): string {
   const newDate = new Date(date);
   newDate.setTime(
     newDate.getTime() + (newDate.getTimezoneOffset() + 60) * 60000
   );
-
+  const day = newDate.getDay();
+  const reDate = newDate.getDate();
+  const month = newDate.getMonth();
+  const year = newDate.getFullYear();
   let newFormat = format;
 
   const dateObject = {
-    DDDD: getDayofWeek(newDate.getDay()).toUpperCase(),
-    Dddd: getDayofWeek(newDate.getDay()),
-    DDD: getDayofWeek(newDate.getDay(), true).toUpperCase(),
-    Ddd: getDayofWeek(newDate.getDay(), true),
-    DD: newDate.getDate().toString().padStart(2, '0'),
-    DTH: getOrdinalNumber(newDate.getDate()).toUpperCase(),
-    Dth: getOrdinalNumber(newDate.getDate()),
-    D: newDate.getDate().toString(),
-    MMMM: getMonthName(newDate.getMonth()).toUpperCase(),
-    Mmmm: getMonthName(newDate.getMonth()),
-    MMM: getMonthName(newDate.getMonth(), true).toUpperCase(),
-    Mmm: getMonthName(newDate.getMonth(), true),
-    MM: (newDate.getMonth() + 1).toString().padStart(2, '0'),
-    YY: parseInt(
-      newDate.getFullYear().toString().substring(2, 4),
-      10
-    ).toString(),
-    YYYY: newDate.getFullYear().toString(),
+    DDDD: getDayofWeek(day).toUpperCase(),
+    Dddd: getDayofWeek(day),
+    DDD: getDayofWeek(day, true).toUpperCase(),
+    Ddd: getDayofWeek(day, true),
+    DD: reDate.toString().padStart(2, '0'),
+    DTH: getOrdinalNumber(reDate).toUpperCase(),
+    Dth: getOrdinalNumber(reDate),
+    D: reDate.toString(),
+    MMMM: getMonthName(month).toUpperCase(),
+    Mmmm: getMonthName(month),
+    MMM: getMonthName(month, true).toUpperCase(),
+    Mmm: getMonthName(month, true),
+    MM: (month + 1).toString().padStart(2, '0'),
+    YY: parseInt(year.toString().substring(2, 4), 10).toString(),
+    YYYY: year.toString(),
   };
 
   newFormat = newFormat.replace(/D{4,}/, dateObject.DDDD);

@@ -4,10 +4,6 @@
   color: rgb(24, 49, 81);
   font-weight: 700;
   white-space: nowrap;
-  display: flex;
-  gap: .5em;
-  justify-content: center;
-  align-items: center;
   border-radius: .5em;
   padding: .6em;
   user-select: none;

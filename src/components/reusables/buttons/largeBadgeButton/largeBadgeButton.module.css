@@ -1,10 +1,9 @@
 .button {
-  width: 0.6em;
-  height: 0.6em;
   background-color: var(--color, #778491);
-  opacity: 0.6;
+  opacity: 0.8;
   font-size: var(--size, 1em);
-  border-radius: 50%;
+  border-radius: 0.2em;
+  padding: 0.1em;
 }
 .button:hover {
   opacity: 1;
