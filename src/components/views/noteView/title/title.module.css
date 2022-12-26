@@ -1,0 +1,21 @@
+.form {
+  color: #f2f3f3;
+}
+.input {
+  font-size: var(--size, 2.5em);
+  font-weight: 800;
+  line-height: 1.25em;
+  border-radius: 0;
+}
+.h1 {
+  max-width: 35ch;
+  font-size: var(--size, 2.5em);
+  font-weight: 800;
+  line-height: 1.25em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.placeholder {
+  color: rgb(73 76 82);
+}

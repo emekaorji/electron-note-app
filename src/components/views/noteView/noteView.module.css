@@ -10,25 +10,10 @@
   justify-content: space-between;
   padding: 1em 1em 0.3em;
 }
-.title {
+.titleSection {
   display: flex;
   gap: 0.1em;
   flex-direction: column;
-}
-.title input {
-  font-size: var(--size, 2.5em);
-  font-weight: 800;
-  line-height: 1.25em;
-  border-radius: 0;
-}
-.title h1 {
-  max-width: 35ch;
-  font-size: var(--size, 2.5em);
-  font-weight: 800;
-  line-height: 1.25em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 .controls {
   display: flex;
@@ -56,6 +41,6 @@
 .image + .image {
   margin-left: -1em;
 }
-.collaborators:hover .image + .image {
+.hovered .image + .image {
   margin-left: 0em;
 }

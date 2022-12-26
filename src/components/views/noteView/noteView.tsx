@@ -6,10 +6,11 @@ import Image from 'components/reusables/images/image';
 import SmallButton from 'components/reusables/buttons/smallButton/smallButton';
 import CommentIcon from 'components/reusables/icons/comment';
 import LargeBadgeButton from 'components/reusables/buttons/largeBadgeButton/largeBadgeButton';
-import SecondaryInput from 'components/reusables/inputs/secondaryInput/secondaryInput';
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
+import getClassName from 'functions/getClassName';
 import styles from './noteView.module.css';
 import data from '../../../data/notes.json';
+import Title from './title/title';
 
 const NoteView = () => {
   const { noteId } = useParams();
@@ -17,54 +18,12 @@ const NoteView = () => {
     (note) => note.id === noteId
   );
 
-  const [title, setTitle] = useState(currentNote?.title);
-  const [isEditing, setIsEditing] = useState(false);
-  const [size, setSize] = useState(2.5);
-
-  const saveTitle = (event: { preventDefault: () => void }): void => {
-    event.preventDefault();
-    setIsEditing(false);
-  };
-
-  const editTitle = async () => {
-    await setIsEditing(true);
-    document.getElementById('title')?.focus();
-  };
-
-  useEffect(() => {
-    const len = title?.length;
-    if (!len) return;
-    if (len > 40) {
-      setSize(1.7);
-      return;
-    }
-    if (len > 36) {
-      setSize(1.8);
-      return;
-    }
-    if (len > 32) {
-      setSize(1.9);
-      return;
-    }
-    if (len > 28) {
-      setSize(2);
-      return;
-    }
-    if (len > 24) {
-      setSize(2.1);
-      return;
-    }
-    if (len > 20) {
-      setSize(2.2);
-      return;
-    }
-    setSize(2.5);
-  }, [title?.length]);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className={styles.noteView}>
       <div className={styles.header}>
-        <div className={styles.title}>
+        <div className={styles.titleSection}>
           <div className={styles.labels}>
             {currentNote?.labels.map((label) => (
               <LargeBadgeButton
@@ -74,26 +33,12 @@ const NoteView = () => {
               />
             ))}
           </div>
-          <form
-            onSubmit={saveTitle}
-            style={{ '--size': `${size}em` } as React.CSSProperties}
-          >
-            {isEditing ? (
-              <SecondaryInput
-                value={title}
-                onChange={(e) => setTitle(e?.target.value)}
-                onBlur={saveTitle}
-                id="title"
-                transparent
-              />
-            ) : (
-              <h1 onClick={editTitle} aria-hidden="true">
-                {title || 'No title'}
-              </h1>
-            )}
-          </form>
+          <Title title={currentNote?.title} />
         </div>
-        <div className={styles.controls}>
+        <div
+          className={styles.controls}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <SmallButton
             icon={<CommentIcon />}
             className={styles.comments}
@@ -104,7 +49,10 @@ const NoteView = () => {
               e.stopPropagation();
               e.preventDefault();
             }}
-            className={styles.collaborators}
+            onMouseOver={() => setIsHovered(true)}
+            className={
+              styles.collaborators + getClassName(isHovered, styles.hovered)
+            }
             title="Collaborators"
           >
             {currentNote?.collaborators.map((collaborator) => (
