@@ -1,0 +1,21 @@
+#editorWrapper {
+  color: #8b8d90;
+  /* fill: #fff !important; */
+  stroke: #fff !important;
+}
+#editorWrapper {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.ql-container.ql-bubble .ql-editor {
+  font-size: 1.5em;
+  padding-bottom: 3em;
+}
+
+.ql-container.ql-bubble .ql-editor ul {
+  padding-left: 0;
+}
+.ql-container.ql-bubble .ql-editor s {
+  color: #5b5f64;
+}

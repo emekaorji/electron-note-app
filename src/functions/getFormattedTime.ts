@@ -1,3 +1,25 @@
+type TimeType =
+  | `${string}:${string}`
+  | `${string}:${string}:${string}`
+  | `${string}:${string} AM`
+  | `${string}:${string}:${string} AM`
+  | `${string}:${string} PM`
+  | `${string}:${string}:${string} PM`
+  | number
+  | string
+  | Date
+  | undefined;
+
+const pad2 = (str: string): string => str.padStart(2, '0');
+const pad2Str = (num: number): string => num.toString().padStart(2, '0');
+const str = (num: number): string => num.toString();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isDateValid = (...val: any[]): boolean => {
+  // @ts-ignore
+  return !Number.isNaN(new Date(...val).valueOf());
+};
+
 /**
  * Formats a date based on the specified format. Uppercase letters for 24-Hour time formats.
  *
@@ -15,25 +37,12 @@
  * // => 'Half past 9'
  * @returns The formatted date
  */
-
-type TimeType =
-  | `${string}:${string}`
-  | `${string}:${string}:${string}`
-  | `${string}:${string} AM`
-  | `${string}:${string}:${string} AM`
-  | `${string}:${string} PM`
-  | `${string}:${string}:${string} PM`
-  | number
-  | Date;
-
-const pad2 = (str: string): string => str.padStart(2, '0');
-const pad2Str = (num: number): string => num.toString().padStart(2, '0');
-const str = (num: number): string => num.toString();
-
 export default function getFormattedTime(
   time: TimeType,
   format: string
 ): string {
+  if (!time) return '';
+
   let is24HourFormat: boolean;
   let past11: boolean;
   let past12: boolean;
@@ -48,7 +57,7 @@ export default function getFormattedTime(
   let dayPeriod: string;
   let newFormat = format;
 
-  if (typeof time === 'string') {
+  if (!isDateValid(time) && typeof time === 'string') {
     const newTime = time.split(' ');
     const timeComponents = newTime[0].split(':');
     [hh, mm, ss = '00'] = timeComponents;

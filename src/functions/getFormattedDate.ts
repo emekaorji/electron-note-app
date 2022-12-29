@@ -6,6 +6,7 @@ import getOrdinalNumber from './getOrdinalNumber';
  * Formats a date based on the specified format.
  *
  * Example Formats(not restricted to):
+ * `DDD, Dth Mmm, YYYY`,
  * `MMM DD, YYYY`,
  * `MMM DTH, YYYY`,
  * `Mmm DD, YYYY`,
@@ -33,9 +34,11 @@ import getOrdinalNumber from './getOrdinalNumber';
  */
 
 export default function getFormattedDate(
-  date: string | number | Date,
+  date: string | number | Date | undefined,
   format: string
 ): string {
+  if (!date) return '';
+
   const newDate = new Date(date);
   newDate.setTime(
     newDate.getTime() + (newDate.getTimezoneOffset() + 60) * 60000

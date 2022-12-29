@@ -1,26 +1,40 @@
 import SecondaryInput from 'components/reusables/inputs/secondaryInput/secondaryInput';
+import useDataContext from 'hooks/context/useDataContext';
 import { useEffect, useState } from 'react';
+import useNoteViewContext from '../../shared/hooks/useNoteViewContext';
+import useTitleSocket from '../../shared/hooks/useTitleSocket';
 import styles from './title.module.css';
 
-const Title = ({
-  title: name = '',
-}: {
-  title: string | undefined;
-}): JSX.Element => {
-  const [title, setTitle] = useState(name);
+const Title = () => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  /* @ts-ignore */
+  const { socket } = useDataContext();
+  /* @ts-ignore */
+  const { currentNote }: { currentNote: DataProps } = useNoteViewContext();
+
+  const { title, setTitle, saveAndBroadcastTitle } = useTitleSocket(
+    socket,
+    currentNote
+  );
+
   const [isEditing, setIsEditing] = useState(false);
   const [size, setSize] = useState(2.5);
 
-  const saveTitle = (event: { preventDefault: () => void }): void => {
+  const handleSaveTitle = async (event: {
+    preventDefault: () => void;
+  }): Promise<void> => {
     event.preventDefault();
+    await saveAndBroadcastTitle();
     setIsEditing(false);
   };
 
+  // Edit title locally
   const editTitle = async () => {
     await setIsEditing(true);
     document.getElementById('title')?.focus();
   };
 
+  // Auto-resize text
   useEffect(() => {
     const len = title?.length;
     if (!len) return;
@@ -54,7 +68,7 @@ const Title = ({
   return (
     <>
       <form
-        onSubmit={saveTitle}
+        onSubmit={handleSaveTitle}
         className={styles.form}
         style={{ '--size': `${size}em` } as React.CSSProperties}
       >
@@ -62,7 +76,7 @@ const Title = ({
           <SecondaryInput
             value={title}
             onChange={(e) => setTitle(e?.target.value)}
-            onBlur={saveTitle}
+            onBlur={handleSaveTitle}
             id="title"
             className={styles.input}
             transparent

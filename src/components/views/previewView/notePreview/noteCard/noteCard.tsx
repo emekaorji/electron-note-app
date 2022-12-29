@@ -1,12 +1,14 @@
 import BadgeButton from 'components/reusables/buttons/badgeButton/badgeButton';
-import SecondaryButton from 'components/reusables/buttons/secondaryButton/secondaryButton';
+// import SecondaryButton from 'components/reusables/buttons/secondaryButton/secondaryButton';
 import { Link } from 'react-router-dom';
 import getFormattedDate from 'functions/getFormattedDate';
 import ellipsify from 'functions/ellipsify';
 import getFormattedTime from 'functions/getFormattedTime';
 import colors from 'data/colors';
 import DataProps from 'types/data';
-import Image from 'components/reusables/images/image';
+// import Image from 'components/reusables/images/image';
+import Quill from 'quill';
+import { useMemo } from 'react';
 import styles from './noteCard.module.css';
 
 type NoteCardProps = {
@@ -14,11 +16,19 @@ type NoteCardProps = {
 };
 
 const NoteCard = ({
-  data: { id, title, content, labels, collaborators, updated },
+  data: { _id, title, content, labels, updatedAt },
 }: NoteCardProps) => {
+  const textContent = useMemo(() => {
+    const editor = document.createElement('div');
+    const q = new Quill(editor);
+    q.setContents(content);
+
+    return q.getText(0, 400);
+  }, [content]);
+
   return (
     <>
-      <Link className={styles.card} to={id} title={title}>
+      <Link className={styles.card} to={_id} title={title}>
         <div className={styles.layer1}>
           <h5>{title}</h5>
           <div className={styles.badgesContainer}>
@@ -31,9 +41,9 @@ const NoteCard = ({
             ))}
           </div>
         </div>
-        <div className={styles.layer2}>{ellipsify(content, 200)}</div>
+        <div className={styles.layer2}>{ellipsify(textContent, 200)}</div>
         <div className={styles.layer3}>
-          <div className={styles.collaborators}>
+          {/* <div className={styles.collaborators}>
             <SecondaryButton
               transparent
               onClick={(e) => {
@@ -50,10 +60,10 @@ const NoteCard = ({
                 />
               ))}
             </SecondaryButton>
-          </div>
+          </div> */}
           <div className={styles.time}>
-            {getFormattedTime(updated, 'h:mm P')} •{' '}
-            {getFormattedDate(updated, 'Mmm Dth, YYYY')}
+            {getFormattedTime(updatedAt, 'h:mm P')} •{' '}
+            {getFormattedDate(updatedAt, 'Mmm Dth, YYYY')}
           </div>
         </div>
       </Link>

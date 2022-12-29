@@ -1,3 +1,5 @@
+import { Delta } from 'types-quill-delta';
+
 interface Commenter {
   readonly id: string;
   readonly name: string;
@@ -14,11 +16,13 @@ interface Collaborator extends Commenter {
 }
 
 interface Comment {
-  readonly id: string;
+  readonly _id: string;
   content: string;
-  commenter: Commenter;
+  // commenter: Commenter;
   reactions: Array<string>;
-  replies: Array<Comment>;
+  // replies: Array<Comment>;
+  createdAt: number | string | Date;
+  updatedAt: number | string | Date;
 }
 
 interface Labels {
@@ -27,16 +31,16 @@ interface Labels {
 }
 
 interface DataProps {
-  id: string;
+  _id: string;
   title: string;
-  created: number;
-  updated: number;
-  content: string;
+  content: Delta;
   color: string | null;
   labels: Array<Labels>;
   owner: Owner;
   collaborators: Array<Collaborator>;
   comments: Array<Comment>;
+  createdAt: number | string | Date;
+  updatedAt: number | string | Date;
 }
 
 export default DataProps;

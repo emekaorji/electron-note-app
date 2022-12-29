@@ -3,8 +3,10 @@ import PrimaryLink from 'components/reusables/links/primaryLink/primaryLink';
 import { useMemo } from 'react';
 import styles from './emptyView.module.css';
 
+const ObjectID = require('bson-objectid');
+
 const EmptyView = () => {
-  const randomId = useMemo(() => Math.random() * 10000000000, []);
+  const randomId: string = useMemo<string>(() => ObjectID(), []);
 
   return (
     <>
