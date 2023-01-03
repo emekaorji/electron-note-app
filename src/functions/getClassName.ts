@@ -8,7 +8,7 @@
  * @returns A string. Empty string if `condition` is falsy.
  */
 export default function getClassName(
-  condition: boolean | string | undefined,
+  condition: boolean | string | undefined | null,
   className?: string | undefined
 ): string {
   if (condition) {

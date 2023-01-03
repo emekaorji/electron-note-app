@@ -1,0 +1,3 @@
+- Separate the content and the comment into different states to prevent the
+  rerendering of the editor when comments are being added, being reacted to or
+  when title is being changed

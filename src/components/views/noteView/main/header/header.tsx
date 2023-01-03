@@ -4,7 +4,7 @@ import DataProps from 'types/data';
 import Controls from './controls/controls';
 import Title from './title/title';
 import styles from './header.module.css';
-import useNoteViewContext from '../shared/hooks/useNoteViewContext';
+import useNoteViewContext from '../../shared/hooks/useNoteViewContext';
 
 const Header = () => {
   /* @ts-ignore */

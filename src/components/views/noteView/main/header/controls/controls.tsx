@@ -2,6 +2,7 @@ import SecondaryButton from 'components/reusables/buttons/secondaryButton/second
 import SmallButton from 'components/reusables/buttons/smallButton/smallButton';
 import CommentIcon from 'components/reusables/icons/comment';
 import Image from 'components/reusables/images/image';
+import useNoteViewContext from 'components/views/noteView/shared/hooks/useNoteViewContext';
 import getClassName from 'functions/getClassName';
 import { useState } from 'react';
 import DataProps from 'types/data';
@@ -14,6 +15,9 @@ const Controls = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  // @ts-ignore
+  const { toggleComments } = useNoteViewContext();
+
   return (
     <>
       <div className={styles.controls} onMouseLeave={() => setIsHovered(false)}>
@@ -21,6 +25,7 @@ const Controls = ({
           icon={<CommentIcon />}
           className={styles.comments}
           title="Comments"
+          onClick={toggleComments}
         />
         <SecondaryButton
           onClick={(e) => {

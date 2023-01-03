@@ -1,8 +1,8 @@
 import SecondaryInput from 'components/reusables/inputs/secondaryInput/secondaryInput';
 import useDataContext from 'hooks/context/useDataContext';
-import { useEffect, useState } from 'react';
-import useNoteViewContext from '../../shared/hooks/useNoteViewContext';
-import useTitleSocket from '../../shared/hooks/useTitleSocket';
+import React, { useEffect, useState } from 'react';
+import useNoteViewContext from '../../../shared/hooks/useNoteViewContext';
+import useTitleSocket from '../../../shared/hooks/useTitleSocket';
 import styles from './title.module.css';
 
 const Title = () => {
@@ -20,9 +20,7 @@ const Title = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [size, setSize] = useState(2.5);
 
-  const handleSaveTitle = async (event: {
-    preventDefault: () => void;
-  }): Promise<void> => {
+  const handleSaveTitle = async (event: React.FormEvent): Promise<void> => {
     event.preventDefault();
     await saveAndBroadcastTitle();
     setIsEditing(false);

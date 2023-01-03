@@ -1,11 +1,10 @@
 /* eslint-disable consistent-return */
-import { useDeferredValue, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Socket } from 'socket.io-client';
 import DataProps from 'types/data';
 
 const useTitleSocket = (socket: Socket, currentNote: DataProps) => {
   const [title, setTitle] = useState<string>('');
-  const deferredTitle = useDeferredValue<string>(title);
 
   // Update title with note title
   useEffect(() => {
@@ -14,7 +13,7 @@ const useTitleSocket = (socket: Socket, currentNote: DataProps) => {
   }, [currentNote]);
 
   const saveAndBroadcastTitle = () => {
-    socket.emit('update-title', deferredTitle);
+    socket.emit('update-title', title);
   };
 
   // Receive Changes

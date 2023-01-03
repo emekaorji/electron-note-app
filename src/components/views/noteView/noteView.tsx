@@ -1,15 +1,13 @@
-import styles from './noteView.module.css';
-import Editor from './editor/editor';
-import Header from './header/header';
-import Footer from './footer/footer';
 import NoteViewProvider from './shared/provider/noteViewProvider';
+import Main from './main/main';
+import styles from './noteView.module.css';
+import Aside from './aside/aside';
 
 const NoteViewContent = () => {
   return (
     <div className={styles.noteView}>
-      <Header />
-      <Editor />
-      <Footer />
+      <Main />
+      <Aside />
     </div>
   );
 };

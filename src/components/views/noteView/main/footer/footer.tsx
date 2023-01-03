@@ -1,7 +1,7 @@
 import getFormattedDate from 'functions/getFormattedDate';
 import getFormattedTime from 'functions/getFormattedTime';
 import DataProps from 'types/data';
-import useNoteViewContext from '../shared/hooks/useNoteViewContext';
+import useNoteViewContext from '../../shared/hooks/useNoteViewContext';
 import styles from './footer.module.css';
 
 // type FooterProps = { updated: DataProps['updated'] | undefined };

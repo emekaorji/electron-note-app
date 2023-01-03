@@ -16,13 +16,13 @@ interface Collaborator extends Commenter {
 }
 
 interface Comment {
-  readonly _id: string;
+  readonly id: string;
   content: string;
-  // commenter: Commenter;
+  commenter: Commenter;
   reactions: Array<string>;
   // replies: Array<Comment>;
   createdAt: number | string | Date;
-  updatedAt: number | string | Date;
+  isDelivered: boolean;
 }
 
 interface Labels {
@@ -38,9 +38,16 @@ interface DataProps {
   labels: Array<Labels>;
   owner: Owner;
   collaborators: Array<Collaborator>;
-  comments: Array<Comment>;
   createdAt: number | string | Date;
   updatedAt: number | string | Date;
 }
 
+interface CommentsProps {
+  _id: string;
+  comments: Array<Comment>;
+}
+
+interface NoteProps extends DataProps, CommentsProps {}
+
 export default DataProps;
+export { CommentsProps, NoteProps };

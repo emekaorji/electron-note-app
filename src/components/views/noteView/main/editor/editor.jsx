@@ -4,8 +4,8 @@
 import 'quill/dist/quill.bubble.css';
 import useDataContext from 'hooks/context/useDataContext';
 import styles from './editor.module.css';
-import useNoteViewContext from '../shared/hooks/useNoteViewContext';
-import useEditorSocket from '../shared/hooks/useEditorSocket';
+import useNoteViewContext from '../../shared/hooks/useNoteViewContext';
+import useEditorSocket from '../../shared/hooks/useEditorSocket';
 
 const Editor = () => {
   const { socket } = useDataContext();
