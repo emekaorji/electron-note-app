@@ -34,8 +34,6 @@ const NoteViewProvider = ({ children }) => {
     }
   };
 
-  console.log(noteComments);
-
   return (
     <>
       <NoteViewContext.Provider

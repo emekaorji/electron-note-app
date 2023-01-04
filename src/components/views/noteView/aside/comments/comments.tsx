@@ -12,6 +12,7 @@ import React, {
 } from 'react';
 import { CommentsProps } from 'types/data';
 import createUID from 'create-unique-id';
+import XMarkIcon from 'components/reusables/icons/xMark';
 import useNoteViewContext from '../../shared/hooks/useNoteViewContext';
 import Comment from './comment/comment';
 import styles from './comments.module.css';
@@ -19,6 +20,8 @@ import styles from './comments.module.css';
 const Comments = () => {
   // @ts-ignore
   const { user, socket } = useAuthContext();
+  // @ts-ignore
+  const { toggleComments } = useNoteViewContext();
   // @ts-ignore
   const {
     noteComments,
@@ -106,7 +109,10 @@ const Comments = () => {
   return (
     <>
       <div className={styles.comments} ref={commentContainer}>
-        <h2>Comments</h2>
+        <div className={styles.header}>
+          <h2>Comments</h2>
+          <SmallButton icon={<XMarkIcon />} onClick={toggleComments} />
+        </div>
         <div className={styles.commenstArea}>
           {noteComments?.comments.map((comment) => (
             <Comment key={comment.id} data={comment} />

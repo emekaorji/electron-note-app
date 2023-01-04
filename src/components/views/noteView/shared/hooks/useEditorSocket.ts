@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useDeferredValue, useEffect, useState } from 'react';
 import Quill, { TextChangeHandler } from 'quill';
 import { Socket } from 'socket.io-client';
 import DataProps from 'types/data';
@@ -10,10 +10,9 @@ const toolbarOptions = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
 ];
 
-const SAVE_INTERVAL_MS = 7000;
-
 const useEditorSocket = (socket: Socket, currentNote: DataProps) => {
   const [quill, setQuill] = useState<Quill>();
+  const deferredQuill = useDeferredValue(quill);
 
   // Update editor with content of note
   useEffect(() => {
@@ -23,18 +22,21 @@ const useEditorSocket = (socket: Socket, currentNote: DataProps) => {
     quill.enable();
   }, [quill, currentNote]);
 
-  // Save content
+  // Save Content
   useEffect(() => {
-    if (socket == null || quill == null) return;
+    if (socket == null || deferredQuill == null) return;
 
-    const interval = setInterval(() => {
-      socket.emit('update-content', quill.getContents());
-    }, SAVE_INTERVAL_MS);
+    const handler: TextChangeHandler = async (_delta, _oldDelta, source) => {
+      if (source !== 'user') return;
+      await socket.emit('save-content', deferredQuill.getContents());
+    };
+
+    deferredQuill.on('text-change', handler);
 
     return () => {
-      clearInterval(interval);
+      deferredQuill.off('text-change', handler);
     };
-  }, [socket, quill]);
+  }, [deferredQuill, socket]);
 
   // Send Changes
   useEffect(() => {
