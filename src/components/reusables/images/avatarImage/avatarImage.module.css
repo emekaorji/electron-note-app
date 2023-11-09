@@ -1,0 +1,22 @@
+.imageContainer {
+  width: 2em;
+  height: 2em;
+  background-color: rgb(201, 208, 214);
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 3px solid rgb(24, 49, 81, 0.5);
+  border-radius: 50%;
+}
+.image {
+  display: none;
+  object-fit: cover;
+}
+.loaded .image {
+  display: block;
+}
+/* .loaded {
+  background-color: transparent;
+} */

@@ -1,14 +1,10 @@
-import CalendarPreview from 'components/views/calendarPreview/calendarPreview';
-import NotePreview from 'components/views/notePreview/notePreview';
-import { Outlet, useParams } from 'react-router-dom';
+import PreviewView from 'components/views/previewView/previewView';
+import { Outlet } from 'react-router-dom';
 
 const Preview = () => {
-  const { previewId } = useParams();
-
   return (
     <>
-      {previewId === 'calendar' && <CalendarPreview />}
-      {previewId === 'note' && <NotePreview />}
+      <PreviewView />
       <Outlet />
     </>
   );

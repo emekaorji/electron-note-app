@@ -1,0 +1,42 @@
+.comment {
+  width: 80%;
+  background-color: rgb(109, 120, 117, 0.6);
+  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.2), 0px 18px 88px -4px rgba(24, 39, 75, 0.2);
+  font-size: 0.75em;
+  align-self: flex-end;
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+  border-radius: 0.8em;
+  padding: 0.7em;
+}
+.comment.incoming {
+  align-self: flex-start;
+}
+.layer1, .layer3 {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.name {
+  font-style: italic;
+}
+.layer3 {
+  justify-content: flex-end;
+}
+.status {
+  width: 1em;
+  height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.layer3 .status path {
+  fill: rgb(157, 167, 157);
+}
+.layer3 .status.delivered path {
+  fill: rgb(20, 160, 20);
+}
+/* .layer3 .status.delivered path {
+  fill: rgb(24, 178, 24);
+} */

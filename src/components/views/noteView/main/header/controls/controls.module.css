@@ -1,0 +1,29 @@
+.controls {
+  display: flex;
+  gap: 0.3em;
+  justify-content: space-between;
+  align-items: center;
+  /* align-self: flex-start; */
+}
+.comments, .addCollabs {
+  font-size: 0.8em;
+  padding: 0.4em;
+}
+.collaborators {
+  display: flex;
+  gap: 0.2em;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2em;
+}
+.image {
+  width: 1.6em;
+  border: 2px solid var(--color-4);
+  transition: all 200ms ease;
+}
+.image + .image {
+  margin-left: -1em;
+}
+.hovered .image + .image {
+  margin-left: 0em;
+}

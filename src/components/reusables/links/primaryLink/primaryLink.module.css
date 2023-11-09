@@ -1,0 +1,49 @@
+.link {
+  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.2),
+    0px 18px 88px -4px rgba(24, 39, 75, 0.2);
+  color: rgb(24, 49, 81);
+  font-weight: 700;
+  white-space: nowrap;
+  display: flex;
+  gap: .5em;
+  justify-content: center;
+  align-items: center;
+  border-radius: .5em;
+  padding: .6em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.link:focus,
+.link:hover {
+  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.35),
+    0px 18px 88px -4px rgba(24, 39, 75, 0.35);
+  transform: scale(1.02);
+}
+.link:disabled:hover {
+  filter: brightness(75%);
+}
+.link.transparent {
+  background-color: transparent;
+}
+.link > div {
+  display: flex;
+}
+
+.linkIcon {
+  font-size: var(--iconSize, 1.2em);
+  width: 1em;
+  height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link.preserveIcon .linkIcon {
+  min-width: 1em;
+}
+
+.linkText {
+  display: flex;
+  gap: 0.5ch;
+  justify-content: center;
+  align-items: center;
+}

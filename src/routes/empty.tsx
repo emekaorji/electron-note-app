@@ -1,7 +1,11 @@
 import EmptyView from 'components/views/emptyView/emptyView';
 
 const Empty = () => {
-  return <EmptyView />;
+  return (
+    <>
+      <EmptyView />
+    </>
+  );
 };
 
 export default Empty;

@@ -20,11 +20,7 @@
   transform: scale(1.02);
 }
 .button:disabled {
-  filter: brightness(75%);
   cursor: not-allowed;
-}
-.button:disabled:hover {
-  filter: brightness(75%);
 }
 .button.transparent {
   background-color: transparent;

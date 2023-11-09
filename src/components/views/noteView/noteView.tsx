@@ -1,18 +1,24 @@
-import { Link } from 'react-router-dom';
-import icon from '../../../../assets/icon.svg';
+import NoteViewProvider from './shared/provider/noteViewProvider';
+import Main from './main/main';
 import styles from './noteView.module.css';
+import Aside from './aside/aside';
+
+const NoteViewContent = () => {
+  return (
+    <div className={styles.noteView}>
+      <Main />
+      <Aside />
+    </div>
+  );
+};
 
 const NoteView = () => {
   return (
-    <div>
-      <div className={styles.hello}>
-        <img width="200" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className={styles.hello}>
-        <Link to="/about">About</Link>
-      </div>
-    </div>
+    <>
+      <NoteViewProvider>
+        <NoteViewContent />
+      </NoteViewProvider>
+    </>
   );
 };
 

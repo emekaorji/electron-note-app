@@ -1,0 +1,12 @@
+.button {
+  width: 0.6em;
+  height: 0.6em;
+  background-color: var(--color, #778491);
+  opacity: 0.6;
+  font-size: var(--size, 1em);
+  border-radius: 50%;
+}
+.button:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}

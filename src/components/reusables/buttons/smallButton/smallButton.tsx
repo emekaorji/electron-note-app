@@ -1,16 +1,16 @@
 import getClassName from 'functions/getClassName';
-import styles from './iconButton.module.css';
+import styles from './smallButton.module.css';
 
-type IconButtonProps = {
+type SmallButtonProps = {
   icon: JSX.Element;
   className?: string;
 };
 
-const IconButton = ({
+const SmallButton = ({
   icon,
   className,
   ...props
-}: IconButtonProps &
+}: SmallButtonProps &
   React.ButtonHTMLAttributes<HTMLButtonElement>): JSX.Element => {
   return (
     <>
@@ -25,13 +25,4 @@ const IconButton = ({
   );
 };
 
-export default IconButton;
-
-// const Link = ({
-//   textToDisplay,
-//   ...props
-// }: {
-//   textToDisplay: string;
-// } & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
-//   return <a {...props}>{textToDisplay}</a>;
-// };
+export default SmallButton;

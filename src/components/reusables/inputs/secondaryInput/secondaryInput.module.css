@@ -1,0 +1,18 @@
+.input {
+  min-width: 7ch;
+  max-width: 35ch;
+  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.35),
+    0px 18px 88px -4px rgba(24, 39, 75, 0.35);
+  display: flex;
+  gap: 0.3em;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  border: none;
+}
+.input.transparent {
+  box-shadow: none;
+}
+.input::placeholder {
+  color: rgb(84, 87, 95);
+}

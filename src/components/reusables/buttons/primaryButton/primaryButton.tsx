@@ -6,7 +6,7 @@ import styles from './primaryButton.module.css';
 
 type PrimaryButtonProps = {
   children: React.ReactNode;
-  icon?: JSX.Element;
+  icon: JSX.Element;
   iconSize?: number | string;
   iconPosition?: 'left' | 'right';
   className?: string;
@@ -28,23 +28,6 @@ const PrimaryButton = ({
   transparent = false,
   ...props
 }: PrimaryButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  if (!icon && !error)
-    return (
-      <>
-        <button
-          className={
-            styles.button +
-            getClassName(className) +
-            getClassName(transparent, styles.transparent)
-          }
-          type="button"
-          {...props}
-        >
-          {loading ? <Spinner /> : children}
-        </button>
-      </>
-    );
-
   const newIconPosition = error ? 'left' : iconPosition;
 
   return (

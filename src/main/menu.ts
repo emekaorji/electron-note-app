@@ -89,6 +89,13 @@ export default class MenuBuilder {
       submenu: [
         { label: 'Undo', accelerator: 'Command+Z', selector: 'undo:' },
         { label: 'Redo', accelerator: 'Shift+Command+Z', selector: 'redo:' },
+        {
+          label: 'Save',
+          accelerator: 'Command+S',
+          click: () => {
+            this.mainWindow.webContents.reload();
+          },
+        },
         { type: 'separator' },
         { label: 'Cut', accelerator: 'Command+X', selector: 'cut:' },
         { label: 'Copy', accelerator: 'Command+C', selector: 'copy:' },

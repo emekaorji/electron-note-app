@@ -1,0 +1,8 @@
+.preview {
+  width: 18em;
+  min-width: 18em;
+  background-color: var(--color-2);
+}
+.preview.fullScreen {
+  width: 100%;
+}
